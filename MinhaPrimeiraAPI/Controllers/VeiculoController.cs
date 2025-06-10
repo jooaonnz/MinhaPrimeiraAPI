@@ -25,7 +25,7 @@ namespace MinhaPrimeiraAPI.Controllers
             return Ok(await _veiculoService.GetAll());
         }
 
-        [HttpGet("[id]")]
+        [HttpGet("{codVeiculo}")]
         public async Task<ActionResult<VeiculoEntity>> GetByCodVeiculo(int codVeiculo)
         {
             return Ok(await _veiculoService.GetByCodVeiculo(codVeiculo));
@@ -37,7 +37,7 @@ namespace MinhaPrimeiraAPI.Controllers
             return Ok(await _veiculoService.Post(postVeiculo));
         }
 
-        [HttpDelete("[id]")]
+        [HttpDelete("{codVeiculo}")]
         public async Task<ActionResult<MessageResponse>> Delete(int codVeiculo)
         {
             return Ok(await _veiculoService.Delete(codVeiculo));
