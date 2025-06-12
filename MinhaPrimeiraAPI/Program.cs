@@ -1,4 +1,12 @@
 
+using Locamobi_CRUD_Repositories.Contracts.Repository;
+using Locamobi_CRUD_Repositories.Repository;
+using MeuPrimeiroCrud.Infrastructure;
+using Microsoft.AspNetCore.Connections;
+using MinhaPrimeiraAPI.Contracts.Infrastructure;
+using MinhaPrimeiraAPI.Contracts.Service;
+using MinhaPrimeiraAPI.Services;
+
 namespace MinhaPrimeiraAPI
 {
     public class Program
@@ -7,11 +15,21 @@ namespace MinhaPrimeiraAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+
+            
             // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+            
+            //Dependencia
+
+            builder.Services.AddSingleton<IConnection, Connection>();
+            builder.Services.AddScoped<IVeiculoService, VeiculoService>();
+            builder.Services.AddTransient<IVeiculoRepository, VeiculoRepository>();
+
+
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();

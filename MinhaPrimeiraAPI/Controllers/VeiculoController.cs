@@ -14,9 +14,9 @@ namespace MinhaPrimeiraAPI.Controllers
     {
         private IVeiculoService _veiculoService;
 
-        public VeiculoController()
+        public VeiculoController(IVeiculoService veiculoService)
         {
-            _veiculoService = new VeiculoService();
+            _veiculoService = veiculoService;
 
         }
         [HttpGet]
